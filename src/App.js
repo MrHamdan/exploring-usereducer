@@ -1,22 +1,37 @@
-import logo from './logo.svg';
+import { createContext, useReducer } from 'react';
 import './App.css';
+import ComplexCounter from './Components/ComplexCounter';
+import ComponentA from './Components/ComponentA';
+import Counter from './Components/Counter';
+import CounterThree from './Components/CounterThree';
+
+
+export const counterContext = createContext();
+
+
+const initialState = 0;
+
+const reducer = (state, action) => {
+    switch (action) {
+        case 'increment':
+            return state + 1;
+        case 'decrement':
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
 
 function App() {
+  const [count, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>Count : {count}</div>
+        <counterContext.Provider value={{countDispatch: dispatch}}>
+        <ComponentA/>
+        </counterContext.Provider>
       </header>
     </div>
   );
