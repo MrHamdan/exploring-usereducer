@@ -5,6 +5,7 @@ import ComponentA from './Components/ComponentA';
 import Counter from './Components/Counter';
 import CounterThree from './Components/CounterThree';
 import GetPost from './Components/GetPost';
+import GetPost2 from './Components/GetPost2';
 
 
 // export const counterContext = createContext();
@@ -33,7 +34,7 @@ function App() {
         <counterContext.Provider value={{countDispatch: dispatch}}>
         <ComponentA/>
         </counterContext.Provider> */}
-        <GetPost/>
+        <GetPost2/>
       </header>
     </div>
   );
